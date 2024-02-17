@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
+// Style of the header wrapper
 export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -10,11 +11,13 @@ export const HeaderWrapper = styled.div`
   border-radius: 0.5rem;
 `;
 
+// style of the logo
 export const Logo = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
 `;
 
+// Style of button
 export const Button = styled.button`
   background-color: #176897;
   color: #fff;
@@ -26,6 +29,7 @@ export const Button = styled.button`
   font-size: 15px;
 `;
 
+// Style of LinkStyle
 export const LinkStyle = css`
   text-decoration: none;
   color: #176897;
@@ -41,11 +45,13 @@ export const LinkStyle = css`
   }
 `;
 
+// Style of social media icons/letters in the footer
 export const Letter = styled.div`
   display: flex;
   gap: 0.2rem;
 `;
 
+// Style of ActiveLinkStyle
 export const ActiveLinkStyle = css`
   background-color: #176897;
   color: #fff;

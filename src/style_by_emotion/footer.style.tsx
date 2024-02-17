@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 
+// Style of the footer wrapper
 export const FooterWrapper = styled.footer`
   background-color: #cef1ff;
   border-radius: 0.5rem;
@@ -9,6 +10,7 @@ export const FooterWrapper = styled.footer`
   align-items: center;
 `;
 
+// Style of the social media icons in the footer
 export const CircularLetter = styled.div`
   width: 30px;
   height: 30px;

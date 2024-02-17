@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 
+// Style for the analytics container
 export const AnalyticsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,11 +8,13 @@ export const AnalyticsContainer = styled.div`
   margin-top: 2rem;
 `;
 
+// Style for the analytics title
 export const AnalyticsTitle = styled.h3`
   font-size: 24px;
   margin-bottom: 1rem;
 `;
 
+// Style for the analytics grid
 export const AnalyticsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -23,6 +26,7 @@ export const AnalyticsGrid = styled.div`
   }
 `;
 
+// Style for the analytics item
 export const AnalyticsItem = styled.div`
   background-color: #cef1ff;
   padding: 1rem;
@@ -31,12 +35,14 @@ export const AnalyticsItem = styled.div`
   gap: 1rem;
 `;
 
+// Style for the analytics label
 export const AnalyticsLabel = styled.p`
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 0.5rem;
 `;
 
+// Style for the analytics value
 export const AnalyticsValue = styled.p`
   font-size: 14px;
   color: #666666;
