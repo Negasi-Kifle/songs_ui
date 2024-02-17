@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { Section, Wrapper } from "../style_by_emotion/global.style";
-import { HeaderWrapper, Logo } from "../style_by_emotion/header.style";
+import { Section, Wrapper } from "../styles_by_emotion/global.style";
+import { HeaderWrapper, Logo } from "../styles_by_emotion/header.style";
 
 const LinkStyle = {
   textDecoration: "none",
@@ -10,7 +10,7 @@ const LinkStyle = {
   padding: "0.5rem 1rem",
   borderRadius: "4px",
   font: "18px",
-  backgroundColor: "#f2f2f2",
+  backgroundColor: "inherit",
 };
 
 const Header = () => {

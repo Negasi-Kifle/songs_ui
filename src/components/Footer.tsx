@@ -1,7 +1,8 @@
-import { CircularLetter, FooterWrapper } from "../style_by_emotion/footer.style";
-import { Section, Wrapper } from "../style_by_emotion/global.style";
-import { Letter } from "../style_by_emotion/header.style";
+import { CircularLetter, FooterWrapper } from "../styles_by_emotion/footer.style";
+import { Section, Wrapper } from "../styles_by_emotion/global.style";
+import { Letter } from "../styles_by_emotion/header.style";
 
+// Footer component
 const Footer = () => {
   return (
     <Wrapper>
