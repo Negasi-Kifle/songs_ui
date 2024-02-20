@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 
 // Style for the home wrapper
 export const HomeWrapper = styled.div`
@@ -88,7 +89,7 @@ export const SongImage = styled.img`
 
 // Style for the song name
 export const SongName = styled.h3`
-  font-size: 1.6rem;
+  font-size: 1.0rem;
   font-weight: bold;
   margin-bottom: 0.2rem;
 `;
@@ -128,4 +129,53 @@ export const DeleteButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+`;
+
+export const ParagraphSmall = styled.p`
+  color: white;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 10rem;
+  text-align: center;
+`;
+
+
+
+export const skeletonAnimation = keyframes`
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+`;
+
+// Loading skeleton styles
+export const Skeleton = styled.div`
+  width: 100%;
+  height: 18rem;
+  border-radius: 0.5rem;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0)
+  );
+  background-size: 200px 100%;
+  animation: ${skeletonAnimation} 1.5s infinite linear;
+`;
+
+export const SkeletonText = styled.div`
+  width: 50%;
+  height: 1.21rem;
+  border-radius: 0.3rem;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0)
+  );
+  background-size: 200px 100%;
+  animation: ${skeletonAnimation} 1.5s infinite linear;
 `;
