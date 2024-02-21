@@ -84,10 +84,10 @@ const Home: React.FC = () => {
       const { title, artist, album, genre } = search;
 
       return (
-        song.title.includes(title) &&
-        song.artist.includes(artist) &&
-        song.album?.includes(album) &&
-        song.genre.includes(genre)
+        song.title.toLowerCase().includes(title.toLowerCase()) &&
+        song.artist.toLowerCase().includes(artist.toLowerCase()) &&
+        song.album?.toLowerCase().includes(album.toLowerCase()) &&
+        song.genre.toLowerCase().includes(genre.toLowerCase())
       );
     });
 
