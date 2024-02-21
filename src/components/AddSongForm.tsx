@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { FormGroup, Input, Label } from "../styles_by_emotion/addsong.style"
+import { FormGroup } from "../styles_by_emotion/addsong.style"
 import { Button } from "../styles_by_emotion/addsong.style"
 import { useDispatch, useSelector } from "react-redux";
 import { state } from "../interface";
