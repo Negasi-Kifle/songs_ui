@@ -18,7 +18,7 @@ const Header = () => {
     <Wrapper>
       <Section>
         <HeaderWrapper>
-          <Logo>Logo</Logo>
+          <Logo>Addis Music</Logo>
           <div>
             <NavLink to="/" style={LinkStyle}>
               Home

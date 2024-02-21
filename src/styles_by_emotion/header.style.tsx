@@ -13,8 +13,8 @@ export const HeaderWrapper = styled.div`
 
 // style of the logo
 export const Logo = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.3rem;
+  color: #176897;
 `;
 
 // Style of button
