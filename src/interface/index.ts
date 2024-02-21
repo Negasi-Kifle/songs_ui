@@ -17,7 +17,7 @@ export interface Song {
 
 // Search song
 export interface Search {
-  genre: string | "All";
+  genre: string | "";
   album: string;
   title: string;
   artist: string;
@@ -59,12 +59,33 @@ export interface GenreStat {
   totalSongs: number;
 }
 
-// Stat
-export interface StatType {
-  totalSongs: number;
-  totalArtists: number;
-  totalAlbums: number;
-  totalGenres: number;
+// Analytics structure
+export interface AnalyticsType {
+  allSongs: number;
+  uniqueArtists: number;
+  uniqueAlbums: number;
+  uniqueGenres: number;
+  songsByArtist: SongsByArtist[];
+  songsByAlbum: SongsByAlbum[];
+  songsByGenre: SongsByGenre[];
+}
+
+// Structure of songs-by-artist
+interface SongsByArtist {
+  artist: string;
+  count: number;
+}
+
+// Structure of songs-by-album
+interface SongsByAlbum {
+  album: string;
+  count: number;
+}
+
+// Structure of songs-by-genre
+interface SongsByGenre {
+  genre: string;
+  count: number;
 }
 
 // Artist stat

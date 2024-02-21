@@ -101,6 +101,13 @@ export const AlbumName = styled.p`
   margin-bottom: 1rem;
 `;
 
+// Style for the genre type
+export const GenreType = styled.p`
+  font-size: 1%.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+`;
+
 // Style fir the container of the "Update" and "Delete" buttons
 export const ButtonContainer = styled.div`
   display: flex;
