@@ -7,7 +7,9 @@ import {
   AlbumName,
   ButtonContainer,
   DeleteButton,
+  GenreType,
   HomeWrapper,
+  ParagraphSmall,
   SearchInput,
   SearchWrapper,
   SelectGenre,
@@ -70,6 +72,7 @@ const Home: React.FC = () => {
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
+
     setSearch((prevFilter) => ({
       ...prevFilter,
       [name]: value,
@@ -82,13 +85,14 @@ const Home: React.FC = () => {
     const filtered = songs.filter((song) => {
       const { title, artist, album, genre } = search;
       return (
-        song.title.toLowerCase().includes(title.toLowerCase()) &&
-        song.artist.toLowerCase().includes(artist.toLowerCase()) &&
-        song.album?.toLowerCase().includes(album.toLowerCase()) &&
-        song.genre.toLowerCase().includes(genre.toLowerCase())
+        song.title.includes(title) &&
+        song.artist.includes(artist) &&
+        song.album?.includes(album) &&
+        song.genre.includes(genre)
       );
     });
     setSearchedSongs(filtered);
+
   }, [search, songs]);
 
   // Handle the action triggerred when submit button in the update-song pop-up is clicked
@@ -98,6 +102,7 @@ const Home: React.FC = () => {
     handleClickOpen() // Show the dialog
   };
 
+  // Handle delete
   const handleDelete = (songId: string) => {
     // Handle delete logic here
     dispatch({ type: DELETE_SONG_BY_ID, id: songId });
@@ -115,36 +120,46 @@ const Home: React.FC = () => {
       <HomeWrapper>
         <Section>
           <SearchWrapper>
-            <SelectGenre>
-              <option value="">Select Genre</option>
+            <SelectGenre name='genre' value={search.genre} id='genre'
+              onChange={handleInputChange}>
+              <option value="">All Genres</option>
               <option value="Ambasel">Ambasel</option>
               <option value="Anchihoye">Anchihoye</option>
               <option value="Country">Country</option>
               <option value="Acoustic">Acoustic</option>
+              <option value="Hip hop">Hip hop</option>
             </SelectGenre>
             <SearchInput type="text" placeholder="Search Song" />
-            <Button>Search</Button>
           </SearchWrapper>
 
           <SongGrid>
             {isLoading && new Array(3).fill(<Skeleton />)}
             {!isLoading && (
               <>
-                {songs.map((song) => (
-                  <SongCard key={song._id}>
-                    <SongImage src={songImage} />
-                    <SongName>{song.artist} - {song.title}</SongName>
-                    <AlbumName>{song.album ? song.album : "No Album"}</AlbumName>
-                    <ButtonContainer>
-                      <UpdateButton onClick={() => handleUpdate(song)}>
-                        Update
-                      </UpdateButton>
-                      <DeleteButton onClick={() => handleDelete(song._id)}>
-                        Delete
-                      </DeleteButton>
-                    </ButtonContainer>
-                  </SongCard>
-                ))}
+                {
+                  searchedSongs.length > 0 ?
+                    (
+                      searchedSongs.map((song) => (
+                        <SongCard key={song._id}>
+                          <SongImage src={songImage} />
+                          <SongName>{song.artist} - {song.title}</SongName>
+                          <AlbumName>{song.album ? song.album : "No Album"}</AlbumName>
+                          <GenreType>{song.genre}</GenreType>
+                          <ButtonContainer>
+                            <UpdateButton onClick={() => handleUpdate(song)}>
+                              Update
+                            </UpdateButton>
+                            <DeleteButton onClick={() => handleDelete(song._id)}>
+                              Delete
+                            </DeleteButton>
+                          </ButtonContainer>
+                        </SongCard>
+                      ))
+                    ) : (
+                      <ParagraphSmall>No songs found.</ParagraphSmall>
+                    )
+
+                }
               </>
             )}
           </SongGrid>
