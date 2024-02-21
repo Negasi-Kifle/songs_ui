@@ -21,7 +21,7 @@ import {
 import songImage from "../assets/song.webp";
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { GET_SONGS } from '../redux/sagas/types';
+import { DELETE_SONG_BY_ID, GET_SONGS } from '../redux/sagas/types';
 import UpdateSongPopUp from '../components/UpdateSongPopUp';
 import { setEditSongSlice } from '../redux/slice/edit_song';
 
@@ -61,7 +61,6 @@ const Home: React.FC = () => {
   const songs = useSelector((state: state) => state.songs.songs);
 
   const isLoading = useSelector((state: state) => state.songs.isLoading);
-  console.log(isLoading);
 
   useEffect(() => {
     setSearchedSongs(songs);
@@ -101,7 +100,7 @@ const Home: React.FC = () => {
 
   const handleDelete = (songId: string) => {
     // Handle delete logic here
-    console.log(`Delete song with ID ${songId}`);
+    dispatch({ type: DELETE_SONG_BY_ID, id: songId });
   };
 
   return (
