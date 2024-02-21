@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet';
 import { Section } from "../styles_by_emotion/global.style";
-import { Button } from "../styles_by_emotion/header.style";
 import { Search, state } from '../interface';
 
 import {
@@ -80,10 +79,10 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-    if (songs) {
-    }
+
     const filtered = songs.filter((song) => {
       const { title, artist, album, genre } = search;
+
       return (
         song.title.includes(title) &&
         song.artist.includes(artist) &&
@@ -91,8 +90,8 @@ const Home: React.FC = () => {
         song.genre.includes(genre)
       );
     });
-    setSearchedSongs(filtered);
 
+    setSearchedSongs(filtered);
   }, [search, songs]);
 
   // Handle the action triggerred when submit button in the update-song pop-up is clicked
@@ -129,7 +128,8 @@ const Home: React.FC = () => {
               <option value="Acoustic">Acoustic</option>
               <option value="Hip hop">Hip hop</option>
             </SelectGenre>
-            <SearchInput type="text" placeholder="Search Song" />
+            <SearchInput type="text" name='title' value={search.title}
+              placeholder="Search Song" onChange={handleInputChange} />
           </SearchWrapper>
 
           <SongGrid>
