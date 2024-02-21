@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet';
 import { Section } from "../styles_by_emotion/global.style";
-import { Button } from "../styles_by_emotion/header.style";
 import { Search, state } from '../interface';
 
 import {
