@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 import { Section } from "../styles_by_emotion/global.style";
-import { Search, state } from '../interface';
+import { Search, state } from "../interface";
 
 import {
   AlbumName,
@@ -20,17 +20,14 @@ import {
   UpdateButton,
 } from "../styles_by_emotion/home.style";
 import songImage from "../assets/song.webp";
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DELETE_SONG_BY_ID, GET_SONGS } from '../redux/sagas/types';
-import UpdateSongPopUp from '../components/UpdateSongPopUp';
-import { setEditSongSlice } from '../redux/slice/edit_song';
-
-
+import { DELETE_SONG_BY_ID } from "../redux/sagas/types";
+import UpdateSongPopUp from "../components/UpdateSongPopUp";
+import { setEditSongSlice } from "../redux/slice/edit_song";
 
 // Home page
 const Home: React.FC = () => {
-
   const [open, setOpen] = useState<boolean>(false);
 
   // Show pop-up when button "Update" clicked
@@ -43,13 +40,12 @@ const Home: React.FC = () => {
     setOpen(false);
   };
 
-
-  const [search, setSearch] = useState<Search>(({
+  const [search, setSearch] = useState<Search>({
     genre: "",
     title: "",
     artist: "",
     album: "",
-  }))
+  });
 
   const [searchedSongs, setSearchedSongs] = useState<Search[]>([]);
 
@@ -73,7 +69,8 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-    if (songs) { }
+    if (songs) {
+    }
     const filtered = songs.filter((song) => {
       const { title, artist, album, genre } = search;
 
@@ -88,13 +85,13 @@ const Home: React.FC = () => {
     setSearchedSongs(filtered);
   }, [search, songs]);
 
-  const dispatch = useDispatch() // Dispatch songs
+  const dispatch = useDispatch(); // Dispatch songs
 
   // Handle the action triggerred when submit button in the update-song pop-up is clicked
   const handleUpdate = (song: any) => {
     dispatch(setEditSongSlice(song)); // Dispatch song
 
-    handleClickOpen() // Show the dialog
+    handleClickOpen(); // Show the dialog
   };
 
   // Handle delete
@@ -105,9 +102,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <UpdateSongPopUp
-        open={open}
-        handleClose={handleClose} />
+      <UpdateSongPopUp open={open} handleClose={handleClose} />
       <Helmet>
         <title>Addis Music - Home</title>
         <link rel="icon" href={songImage} />
@@ -115,8 +110,12 @@ const Home: React.FC = () => {
       <HomeWrapper>
         <Section>
           <SearchWrapper>
-            <SelectGenre name='genre' value={search.genre} id='genre'
-              onChange={handleInputChange}>
+            <SelectGenre
+              name="genre"
+              value={search.genre}
+              id="genre"
+              onChange={handleInputChange}
+            >
               <option value="">All Genres</option>
               <option value="Ambasel">Ambasel</option>
               <option value="Anchihoye">Anchihoye</option>
@@ -124,38 +123,43 @@ const Home: React.FC = () => {
               <option value="Acoustic">Acoustic</option>
               <option value="Hip hop">Hip hop</option>
             </SelectGenre>
-            <SearchInput type="text" name='title' value={search.title}
-              placeholder="Search Song" onChange={handleInputChange} />
+            <SearchInput
+              type="text"
+              name="title"
+              value={search.title}
+              placeholder="Search Song"
+              onChange={handleInputChange}
+            />
           </SearchWrapper>
 
           <SongGrid>
             {isLoading && new Array(3).fill(<Skeleton />)}
             {!isLoading && (
               <>
-                {
-                  searchedSongs.length > 0 ?
-                    (
-                      searchedSongs.map((song) => (
-                        <SongCard key={song._id}>
-                          <SongImage src={songImage} />
-                          <SongName>{song.artist} - {song.title}</SongName>
-                          <AlbumName>{song.album ? song.album : "No Album"}</AlbumName>
-                          <GenreType>{song.genre}</GenreType>
-                          <ButtonContainer>
-                            <UpdateButton onClick={() => handleUpdate(song)}>
-                              Update
-                            </UpdateButton>
-                            <DeleteButton onClick={() => handleDelete(song._id)}>
-                              Delete
-                            </DeleteButton>
-                          </ButtonContainer>
-                        </SongCard>
-                      ))
-                    ) : (
-                      <ParagraphSmall>No songs found.</ParagraphSmall>
-                    )
-
-                }
+                {searchedSongs.length > 0 ? (
+                  searchedSongs.map((song) => (
+                    <SongCard key={song._id}>
+                      <SongImage src={songImage} />
+                      <SongName>
+                        {song.artist} - {song.title}
+                      </SongName>
+                      <AlbumName>
+                        {song.album ? song.album : "No Album"}
+                      </AlbumName>
+                      <GenreType>{song.genre}</GenreType>
+                      <ButtonContainer>
+                        <UpdateButton onClick={() => handleUpdate(song)}>
+                          Update
+                        </UpdateButton>
+                        <DeleteButton onClick={() => handleDelete(song._id)}>
+                          Delete
+                        </DeleteButton>
+                      </ButtonContainer>
+                    </SongCard>
+                  ))
+                ) : (
+                  <ParagraphSmall>No songs found.</ParagraphSmall>
+                )}
               </>
             )}
           </SongGrid>
