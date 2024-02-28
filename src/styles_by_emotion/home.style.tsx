@@ -89,7 +89,7 @@ export const SongImage = styled.img`
 
 // Style for the song name
 export const SongName = styled.h3`
-  font-size: 1.0rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0.2rem;
 `;
@@ -145,8 +145,6 @@ export const ParagraphSmall = styled.p`
   margin-bottom: 10rem;
   text-align: center;
 `;
-
-
 
 export const skeletonAnimation = keyframes`
   0% {

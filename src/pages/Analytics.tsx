@@ -23,25 +23,25 @@ const Analytics = () => {
     songsByArtist: [],
     songsByAlbum: [],
     songsByGenre: [],
-  })
+  });
 
   // Fetch analytics data
   const fetchAnalytics = async () => {
     try {
-      const analyticsInDB = await axios.get(`${VITE_API_URL}/songs/analytics`, { headers: { "x-api-key": VITE_API_KEY } })
-      console.log(analyticsInDB);
+      const analyticsInDB = await axios.get(`${VITE_API_URL}/songs/analytics`, {
+        headers: { "x-api-key": VITE_API_KEY },
+      });
 
-      setAnalytics(analyticsInDB.data.data.analytics)
+      setAnalytics(analyticsInDB.data.data.analytics);
     } catch (error) {
       console.log("Error");
     }
-  }
+  };
 
   // Hit the analytics API once when page reloaded
   useEffect(() => {
-    fetchAnalytics()
-  }, [])
-
+    fetchAnalytics();
+  }, []);
 
   return (
     <AnalyticsContainer>
@@ -64,35 +64,29 @@ const Analytics = () => {
           <AnalyticsValue>{analytics.uniqueGenres}</AnalyticsValue>
         </AnalyticsItem>
 
-        {
-          analytics.songsByArtist.map((artistSong) => (
-            <AnalyticsItem>
-              <p>Songs by artist:</p>
-              <AnalyticsLabel>{artistSong.artist}</AnalyticsLabel> <hr></hr>
-              <AnalyticsValue>{artistSong.count}</AnalyticsValue>
-            </AnalyticsItem>
-          ))
-        }
+        {analytics.songsByArtist.map((artistSong) => (
+          <AnalyticsItem>
+            <p>Songs by artist:</p>
+            <AnalyticsLabel>{artistSong.artist}</AnalyticsLabel> <hr></hr>
+            <AnalyticsValue>{artistSong.count}</AnalyticsValue>
+          </AnalyticsItem>
+        ))}
 
-        {
-          analytics.songsByAlbum.map((albumSong) => (
-            <AnalyticsItem>
-              <p>Songs by album: </p>
-              <AnalyticsLabel>{albumSong.album}</AnalyticsLabel> <hr></hr>
-              <AnalyticsValue>{albumSong.count}</AnalyticsValue>
-            </AnalyticsItem>
-          ))
-        }
+        {analytics.songsByAlbum.map((albumSong) => (
+          <AnalyticsItem>
+            <p>Songs by album: </p>
+            <AnalyticsLabel>{albumSong.album}</AnalyticsLabel> <hr></hr>
+            <AnalyticsValue>{albumSong.count}</AnalyticsValue>
+          </AnalyticsItem>
+        ))}
 
-        {
-          analytics.songsByGenre.map((genreSong) => (
-            <AnalyticsItem>
-              <p>Songs by genre: </p>
-              <AnalyticsLabel>{genreSong.genre}</AnalyticsLabel> <hr></hr>
-              <AnalyticsValue>{genreSong.count}</AnalyticsValue>
-            </AnalyticsItem>
-          ))
-        }
+        {analytics.songsByGenre.map((genreSong) => (
+          <AnalyticsItem>
+            <p>Songs by genre: </p>
+            <AnalyticsLabel>{genreSong.genre}</AnalyticsLabel> <hr></hr>
+            <AnalyticsValue>{genreSong.count}</AnalyticsValue>
+          </AnalyticsItem>
+        ))}
       </AnalyticsGrid>
     </AnalyticsContainer>
   );

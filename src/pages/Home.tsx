@@ -43,12 +43,6 @@ const Home: React.FC = () => {
     setOpen(false);
   };
 
-  // Dispatch all songs
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({ type: GET_SONGS });
-  }, []);
-
 
   const [search, setSearch] = useState<Search>(({
     genre: "",
@@ -79,7 +73,7 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-
+    if (songs) { }
     const filtered = songs.filter((song) => {
       const { title, artist, album, genre } = search;
 
@@ -93,6 +87,8 @@ const Home: React.FC = () => {
 
     setSearchedSongs(filtered);
   }, [search, songs]);
+
+  const dispatch = useDispatch() // Dispatch songs
 
   // Handle the action triggerred when submit button in the update-song pop-up is clicked
   const handleUpdate = (song: any) => {
